@@ -2,6 +2,8 @@
 Converter for NGM files to JPG
 """
 import os
+from io import BytesIO
+from PIL import Image
 
 
 def convert(src: str, dst: str = "./") -> None:
@@ -15,8 +17,8 @@ def convert(src: str, dst: str = "./") -> None:
     with open(src, "rb") as f:  # Read the file into bytearray
         ngm = bytearray(f.read())
     new_ngm = bytearray([i ^ 239 for i in ngm])  # Byte wise XOR with 239
-    with open(dst, "wb") as f:  # Write decoded file to JPG
-        f.write(new_ngm)
+    image = Image.open(BytesIO(new_ngm))  # Write decoded file to JPG
+    image.save(dst)
 
 
 if __name__ == "__main__":
