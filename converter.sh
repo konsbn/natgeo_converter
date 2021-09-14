@@ -1,4 +1,9 @@
 ##!/usr/bin/env bash
+
+# Author: CrazyOwl
+# Usage:
+# $ ./converter.sh path/to/image/directory/
+
 set -e
 if [ $# -eq 0 ]
 then
