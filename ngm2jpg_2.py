@@ -2,6 +2,7 @@
 Converter for NGM files to JPG
 """
 import os
+from multiprocessing import Pool
 from io import BytesIO
 from PIL import Image
 
@@ -31,5 +32,5 @@ if __name__ == "__main__":
         print("Incomplete List Of Arguments, Please supply the Directory")
         sys.exit(1)
 
-    for cng in cng_list:
-        convert(cng)
+    with Pool() as p:
+        p.map(convert, cng_list, chunksize=100)
