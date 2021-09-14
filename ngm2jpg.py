@@ -1,5 +1,14 @@
 """
 Converter for NGM files to JPG
+This program converts the NGM files found in the
+Complete National Geographic Magazine DVD into JPG files
+
+Installation:
+$ pip install -r requirements.txt
+
+Usage:
+$ python convert <path_to_directory>
+
 """
 import os
 from io import BytesIO
