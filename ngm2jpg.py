@@ -21,7 +21,7 @@ def convert(src: str, dst: str = None) -> None:
     """
     if dst is None:
         # Given no path for output simply make a new file with
-        # same name and jpg extension
+        # same name and jpg extension in the src directory
         dst = os.path.splitext(src)[0] + ".jpg"
     with open(src, "rb") as f:  # Read the file into bytearray
         ngm = bytearray(f.read())
@@ -36,6 +36,8 @@ if __name__ == "__main__":
 
     try:
         cng_list = glob.glob(sys.argv[1] + "*.cng")
+        if not cng_list:
+            raise FileNotFoundError("No CNG File Exists")
     except IndexError:
         print("Incomplete List Of Arguments, Please supply the Directory")
         sys.exit(1)
